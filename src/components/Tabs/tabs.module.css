@@ -1,0 +1,7 @@
+.tabs-controller {
+  display: flex;
+}
+
+.tabs-controller .active {
+  border: 2px solid #646cff;
+}

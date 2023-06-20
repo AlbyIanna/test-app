@@ -1,0 +1,11 @@
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.error {
+  color: rgb(221, 2, 2);
+  font-size: 0.8em;
+  margin: 5px 0;
+}
