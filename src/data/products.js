@@ -26,7 +26,7 @@ export async function fetchProducts({ queryKey }) {
   }
   queryParams.push(`limit=${PAGE_SIZE}`);
   const searchString = searchQuery.length > 0 ? "/search" : "";
-  const url = `${PRODUCTS_URL}?${searchString}${queryParams.join('&')}`;
+  const url = `${PRODUCTS_URL}${searchString}?${queryParams.join('&')}`;
   const response = await fetch(url);
 
   if (!response.ok) {

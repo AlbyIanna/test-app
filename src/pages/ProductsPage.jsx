@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProductList from "../components/Products/ProductList";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "../data/products";
+import { Search } from "../components/Search/Search";
 
 
 const ProductsPage = () => {
@@ -10,15 +11,17 @@ const ProductsPage = () => {
   const { data, isLoading } = useQuery(
     ['products', searchQuery, page],
     fetchProducts,
+    {
+      staleTime: 1000 * 60 * 60,
+    }
   )
 
   const { products, total, skip, limit } = data || {};
-  console.log(total, skip, limit)
 
   return (
     <div>
       <h2>Products</h2>
-      <input type='search' placeholder='Search...' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+      <Search initialQuery={searchQuery} onChange={setSearchQuery} debounceTime={300} />
       <div>
         <button onClick={() => setPage(page - 1)} disabled={page === 1}>Previous</button>
         <button onClick={() => setPage(page + 1)} disabled={page * limit >= total}>Next</button>

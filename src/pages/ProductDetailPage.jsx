@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { fetchProduct } from "../data/products";
+import { Carousel } from "../components/Carousel/Carousel";
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
@@ -17,9 +18,8 @@ const ProductDetailPage = () => {
         isLoading ? <h1>Loading...</h1>
           : error ? <h1>Something went wrong</h1>
             : product && <>
-
               <h1>{product.title}</h1>
-              <img src={product.images[0]} alt={product.title} />
+              <Carousel images={product.images} />
               <p>{product.description}</p>
             </>
       }
