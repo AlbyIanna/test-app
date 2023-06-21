@@ -8,7 +8,10 @@ const ProductDetailPage = () => {
 
   const { data: product, error, isLoading } = useQuery(
     ['product', productId],
-    fetchProduct
+    fetchProduct,
+    {
+      staleTime: 1000 * 60 * 60,
+    }
   );
 
   return (
